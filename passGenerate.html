@@ -1,0 +1,58 @@
+<template>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <span>PASSWORD GENERATOR</span> 
+            </div>
+            <div class="body">
+                <div class="passGenerated">
+                    <span>{password}
+                    </span>
+                    <template if:true={passGenerated}>
+                        <lightning-icon if:false={isCopied} onclick={handleCopy}  icon-name="utility:copy" variant="inverse" size="small" title="Copy"></lightning-icon>
+                        <lightning-icon if:true={isCopied} icon-name="utility:success" variant="success"  size="small"></lightning-icon>
+                    </template>
+                </div>
+                <div class="passsOptions">
+                    <!-- four options -->
+                    <div class="slider_main">
+                        <input class="slider" type="range" value={length} onchange={handleSilder} min="6" max="18" id="slider">
+                        <output>{length}</output>
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-checkbox_toggle slds-grid">
+                            <span style="color:white;font-size:12px;font-weight:500;letter-spacing:0.8px;" class="slds-form-element__label slds-m-bottom_none">INCLUDE UPPERCASE </span>
+                            <input type="checkbox" name="checkbox-toggle-17" onchange={handleUppercase}  aria-describedby="checkbox-toggle-17" checked={useUppercase} />
+                                <span id="checkbox-toggle-1" class="slds-checkbox_faux_container" aria-live="assertive">
+                                    <span class="slds-checkbox_faux"></span>
+                                </span>
+                        </label>
+                    </div>                                        
+                    <div class="slds-form-element">
+                        <label class="slds-checkbox_toggle slds-grid">
+                            <span style="color:white;font-size:12px;font-weight:500;letter-spacing:0.8px;" class="slds-form-element__label slds-m-bottom_none">INCLUDE DIGITS </span>
+                            <input type="checkbox" name="checkbox-toggle-17" onchange={handleDigits}  aria-describedby="checkbox-toggle-17" checked={useDigit} />
+                                <span id="checkbox-toggle-3" class="slds-checkbox_faux_container" aria-live="assertive">
+                                    <span class="slds-checkbox_faux"></span>
+                                </span>
+                        </label>
+                    </div>                    
+                    <div class="slds-form-element">
+                        <label class="slds-checkbox_toggle slds-grid">
+                            <span style="color:white;font-size:12px;font-weight:500;letter-spacing:0.8px;" class="slds-form-element__label slds-m-bottom_none">INCLUDE SYMBOLS </span>
+                            <input type="checkbox" name="checkbox-toggle-17" onchange={handleSymbols}  aria-describedby="checkbox-toggle-17" checked={useSymbol} />
+                                <span id="checkbox-toggle-4" class="slds-checkbox_faux_container" aria-live="assertive">
+                                    <span class="slds-checkbox_faux"></span>
+                                </span>
+                        </label>
+                    </div>                    
+                </div>
+            </div>
+            <div class="footer">
+                <div class="btn" >
+                    <button class="createPassBtn" onclick={generatePassword} > <span>Generate Password</span> </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
